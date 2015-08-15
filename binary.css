@@ -1,0 +1,69 @@
+body {
+  text-align: center;
+  align-items: center;
+  font-family: "arial";
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+#register {
+  vertical-align: middle;
+}
+
+.bit {
+  border: 1px solid black;
+  width: 3em;
+  height: 3em;
+  display: inline-block;
+  font-size: 2.5em;
+  color: indigo;
+  vertical-align: middle;
+  margin: 5px 0px 5px 0px;
+  cursor: pointer;
+}
+
+.bit:after {
+    content: "";
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#outputPanel {
+  border: 1px solid indigo;
+  border-collapse: collapse;
+  text-align: left;
+  margin: auto;
+  width: 66%;
+}
+
+#outputPanel td {
+  border: 1px solid indigo;
+  font-size: 2.5em;
+  font-family: "consolas";
+  padding: 5px 10px 5px 10px;
+  width: 50%;
+}
+
+#buttonBar {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.button {
+  display: inline-block;
+  background-color: #EDE6F2;
+  padding: 1em;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  border: 1px solid black;
+  border-radius: 1.5em;
+  width: 12%;
+}
