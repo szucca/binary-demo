@@ -1,8 +1,8 @@
 
-var OFF_COLOR = "lightgray";
-var ON_COLOR = "indigo";
+const OFF_COLOR = "lightgray";
+const ON_COLOR = "indigo";
 
-var SIZE = 40;
+const SIZE = 40;
 
 window.onload = function() {
   
@@ -21,7 +21,7 @@ window.onload = function() {
   // handle clicks for the Show/Hide Bit Values button
   document.getElementById("showBits").onclick = function() {
     
-    var turnOff = (this.innerHTML === "Show Bit Values") ? true : false;
+    let turnOff = (this.innerHTML === "Show Bit Values") ? true : false;
     register.toggleShowBits();
     
     // set the text in each bit
@@ -37,13 +37,13 @@ window.onload = function() {
   
   // clicks on Bits will bubble to the register
   document.getElementById("register").onclick = function() {
-      var n = register.calculateValue();
+      let n = register.calculateValue();
       register.updateValue(n);
     }
     
 }
 
-var register = {
+let register = {
   
   bitCount: 8,
   bits: [],
@@ -51,14 +51,14 @@ var register = {
   
   initRegister: function() {
     // create the Bit objects and store them
-    for(i=0; i<this.bitCount; i++) {
+    for(let i=0; i<this.bitCount; i++) {
       this.bits.push(new Bit(i));
     }
   },
 
   setText: function() {
-    var n;
-    for(var i=0; i<this.bitCount; i++) {
+    let n;
+    for(let i=0; i<this.bitCount; i++) {
       n = this.bits[i].getValue();
       if(this.showBits) {
         this.bits[i].setText(n);
@@ -83,7 +83,7 @@ var register = {
   
   clearBits: function(elem) {
     
-    for(var i=0; i<this.bitCount; i++) {
+    for(let i=0; i<this.bitCount; i++) {
       this.bits[i].turnOff();
     }
     
@@ -91,8 +91,8 @@ var register = {
   },
   
   calculateValue: function() {
-    var n = 0;
-    for(var i=0; i<this.bitCount; i++) {
+    let n = 0;
+    for(let i=0; i<this.bitCount; i++) {
       if (this.bits[i].getState()) {
         n += Math.pow(2, i);
       }
@@ -102,18 +102,18 @@ var register = {
   
   updateValue: function(n) {
     
-    var bStr = "00000000" + n.toString(2);  // pad the string
+    let bStr = "00000000" + n.toString(2);  // pad the string
     bStr = bStr.substr(bStr.length - 8);     // keep the last 8 bits
     document.getElementById("binaryValue").innerHTML = "0b" + bStr;
     
-    var oStr = n.toString(8);
+    let oStr = n.toString(8);
     
     document.getElementById("octalValue").innerHTML = "0" + oStr;
     
-    var dStr = n.toString();
+    let dStr = n.toString();
     document.getElementById("decimalValue").innerHTML = dStr;
     
-    var hStr = "00" + n.toString(16);  // pad the string
+    let hStr = "00" + n.toString(16);  // pad the string
     hStr = hStr.substr(hStr.length - 2);     // keep the last 4 bits
     document.getElementById("hexadecimalValue").innerHTML = "0x" + hStr;
   }
@@ -121,11 +121,11 @@ var register = {
 
 function Bit(id) {
     this.id = id;
-    this.elem = document.getElementById("b" + i);
+    this.elem = document.getElementById("b" + id);
     this.state = false;
     this.value = Math.pow(2, id);
     
-    var bit = this;
+    let bit = this;
     
     this.setText = function(txt) {
       this.elem.innerHTML = txt;
@@ -166,14 +166,14 @@ function Bit(id) {
 
 function buttonMaker(elemId, label, targetId ) {
   // these are made once, when the button maker is called
-  var elem = document.getElementById(elemId);
-  var target = document.getElementById(targetId);
-  var onText = "Show " + label;
-  var offText = "Hide " + label;
+  let elem = document.getElementById(elemId);
+  let target = document.getElementById(targetId);
+  let onText = "Show " + label;
+  let offText = "Hide " + label;
   
   // variables declared in the function have local scope
   elem.onclick = function() {
-    var currText = elem.innerHTML;
+    let currText = elem.innerHTML;
     if (currText === offText) {
       elem.innerHTML = onText;
       target.style.display = "none";
